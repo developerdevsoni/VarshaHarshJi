@@ -4,281 +4,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varsha & Harsh Ji's Royal Wedding</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Varsha & Harsh Ji Wedding</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Italiana&display=swap');
+
+        :root {
+            --primary: #C18F5C;
+            --secondary: #8B4513;
+            --accent: #FFF8DC;
+            --text: #4A4A4A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            background: #f9f9f9;
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            text-align: center;
-            padding: 0;
-            margin: 0;
+            font-family: 'Playfair Display', serif;
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        h1,
-        h2 {
-            font-family: 'Playfair Display', serif;
-            color: #8B0000;
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin: 20px 0;
-        }
-
-        h2 {
-            font-size: 3rem;
-            margin: 15px 0;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .hero-section {
-            background: url('hero-bg.jpg') no-repeat center center/cover;
+        .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            background-attachment: fixed;
         }
 
-        .hero-section h1 {
-            font-size: 6rem;
-            margin: 0;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            z-index: -1;
         }
 
-        .hero-section p {
-            font-size: 1.5rem;
-            margin: 10px 0;
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
         }
 
-        .bride-groom-frame {
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-family: 'Italiana', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--accent);
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .couple-section {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .bride-groom-frame img {
-            width: 200px;
-            height: 250px;
-            border-radius: 15px;
-            object-fit: cover;
-            border: 5px solid #8B0000;
-        }
-
-        .gallery {
-            display: flex;
+            gap: 4rem;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .gallery img {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+        .couple-card {
+            flex: 0 1 400px;
         }
 
-        .gallery img:hover {
-            transform: scale(1.1);
-        }
-
-        .event-section {
-            margin: 40px 0;
-            padding: 20px;
-            background: #FFE4B5;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .event-section h4 {
-            font-size: 2rem;
-            color: #8B0000;
-            margin: 10px 0;
-        }
-
-        .event-section p {
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        iframe {
-            width: 100%;
-            height: 400px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .gods-images {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 40px 0;
-        }
-
-        .gods-images img {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-        }
-
-        #rsvp-form {
-            margin: 40px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        #rsvp-form input {
+        .couple-img {
             width: 300px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
+            height: 400px;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
         }
 
-        #rsvp-form button {
-            padding: 10px 20px;
-            background: #8B0000;
-            color: #fff;
+        .decorative-border {
+            height: 2px;
+            width: 100px;
+            background: var(--primary);
+            margin: 2rem auto;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-event {
+            margin: 4rem 0;
+            position: relative;
+            width: 50%;
+            padding: 2rem;
+        }
+
+        .timeline-event:nth-child(odd) {
+            left: 0;
+            padding-right: 4rem;
+        }
+
+        .timeline-event:nth-child(even) {
+            left: 50%;
+            padding-left: 4rem;
+        }
+
+        .event-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card h3 {
+            color: var(--primary);
+            font-family: 'Italiana', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
             border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
             border-radius: 5px;
-            font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
         }
 
-        #rsvp-form button:hover {
-            background: #6B0000;
+        .submit-btn:hover {
+            background: var(--secondary);
         }
 
         footer {
-            background: #8B0000;
-            color: #fff;
-            padding: 20px;
-            margin-top: 40px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
         }
 
-        footer p {
-            margin: 0;
-            font-size: 1rem;
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-event {
+                width: 100%;
+                left: 0 !important;
+                padding: 2rem !important;
+            }
         }
 
-        details {
-            background: #FFE4B5;
-            border-radius: 15px;
-            margin: 20px 0;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .location-section {
+            background: var(--accent);
+            padding: 6rem 2rem;
         }
 
-        summary {
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            color: #8B0000;
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .event-content {
-            margin-top: 15px;
-            font-size: 1.2rem;
-            color: #555;
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
-        .event-content img {
-            width: 100%;
-            max-width: 600px;
+        .location-details {
+            text-align: left;
+            padding: 2rem;
+            background: white;
             border-radius: 10px;
-            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-details h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info i {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .couple-section {
+                gap: 2rem;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .couple-img {
+                width: 250px;
+                height: 350px;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-event {
+                width: 100%;
+                left: 0 !important;
+                padding: 1rem !important;
+            }
+
+            .event-card {
+                padding: 1.5rem;
+            }
+
+            .rsvp-form {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .couple-img {
+                width: 200px;
+                height: 280px;
+            }
+
+            .event-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .location-details {
+                padding: 1.5rem;
+            }
+
+            .location-details h3 {
+                font-size: 1.5rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        /* Add smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation dots for mobile */
+        .nav-dots {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        /* Add loading animation */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-icon {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="hero-section">
-        <div>
+    <div class="hero">
+        <div class="hero-content" data-aos="fade-up">
             <h1>Varsha & Harsh Ji</h1>
-            <p>10th December 2025 | Jyani Paradise Hotel</p>
+            <p>20th February 2025</p>
+            <div class="decorative-border"></div>
+            <p>Jyani Paradise Hotel</p>
         </div>
     </div>
 
-    <div class="container">
-        <h2>Our Journey</h2>
-        <div class="bride-groom-frame">
-            <img src="bride.jpg" alt="Bride">
-            <img src="groom.jpg" alt="Groom">
+    <section class="section">
+        <h2 class="section-title" data-aos="fade-up">The Beautiful Couple</h2>
+        <div class="couple-section">
+            <div class="couple-card" data-aos="fade-right">
+                <img src="/api/placeholder/300/400" alt="Varsha" class="couple-img">
+                <h3>Varsha</h3>
+                <p>Daughter of Mr. & Mrs. Sharma</p>
+            </div>
+            <div class="couple-card" data-aos="fade-left">
+                <img src="/api/placeholder/300/400" alt="Harsh Ji" class="couple-img">
+                <h3>Harsh Ji</h3>
+                <p>Son of Mr. & Mrs. Jyani</p>
+            </div>
         </div>
+    </section>
 
-        <div class="gallery">
-            <img src="img1.jpg" alt="Varsha & Harsh Ji">
-            <img src="img2.jpg" alt="Engagement">
-            <img src="img3.jpg" alt="Pre-Wedding">
+    <section class="section">
+        <h2 class="section-title" data-aos="fade-up">Wedding Events</h2>
+        <div class="timeline">
+            <div class="timeline-event" data-aos="fade-right">
+                <div class="event-card">
+                    <img src="/api/placeholder/400/300" alt="Haldi Ceremony">
+                    <h3>Haldi Ceremony</h3>
+                    <p>19th February 2025, 10:00 AM</p>
+                    <p>Join us for the auspicious Haldi ceremony</p>
+                </div>
+            </div>
+            <div class="timeline-event" data-aos="fade-left">
+                <div class="event-card">
+                    <img src="/api/placeholder/400/300" alt="Mehendi Ceremony">
+                    <h3>Mehendi & Sangeet</h3>
+                    <p>19th February 2025, 6:00 PM</p>
+                    <p>An evening of music, dance & traditions</p>
+                </div>
+            </div>
+            <div class="timeline-event" data-aos="fade-right">
+                <div class="event-card">
+                    <img src="/api/placeholder/400/300" alt="Wedding Ceremony">
+                    <h3>Wedding Ceremony</h3>
+                    <p>20th February 2025, 7:00 PM</p>
+                    <p>Join us in celebrating our union</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <h2>Wedding Functions</h2>
-        <details>
-            <summary>Haldi Ceremony</summary>
-            <div class="event-content">
-                <p>Join us for the auspicious Haldi ceremony.</p>
-                <img src="haldi.jpg" alt="Haldi Ceremony">
+    <section class="section">
+        <h2 class="section-title" data-aos="fade-up">RSVP</h2>
+        <form class="rsvp-form" data-aos="zoom-in">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
             </div>
-        </details>
-
-        <details>
-            <summary>Mehendi & Mahila Sangeet</summary>
-            <div class="event-content">
-                <p>Celebrate with music and dance at the Mehendi and Mahila Sangeet.</p>
-                <img src="mehendi.jpg" alt="Mehendi & Mahila Sangeet">
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
             </div>
-        </details>
-
-        <details>
-            <summary>The Grand Wedding</summary>
-            <div class="event-content">
-                <p>The most awaited moment!</p>
-                <img src="wedding.jpg" alt="The Grand Wedding">
+            <div class="form-group">
+                <input type="tel" placeholder="Your Phone Number" required>
             </div>
-        </details>
-
-        <h2>Venue</h2>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1022597500003!2d75.78631431504398!3d26.85046998316026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5a8b5f8f4d5%3A0x1f3b8c8c8c8c8c8c!2sJyani%20Paradise%20Hotel!5e0!3m2!1sen!2sin!4v1629999999999!5m2!1sen!2sin"></iframe>
-
-        <h2>RSVP</h2>
-        <form id="rsvp-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <button type="submit">Confirm Attendance</button>
+            <button type="submit" class="submit-btn">Confirm Attendance</button>
         </form>
-    </div>
+    </section>
 
     <footer>
         <p>© 2025 Varsha & Harsh Ji's Wedding. All rights reserved.</p>
     </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-icon"></div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="hero"></div>
+        <div class="nav-dot" data-section="couple"></div>
+        <div class="nav-dot" data-section="events"></div>
+        <div class="nav-dot" data-section="location"></div>
+        <div class="nav-dot" data-section="rsvp"></div>
+    </div>
+
+    <!-- Previous sections remain the same until location section -->
+
+    <section class="location-section" id="location">
+        <div class="location-container">
+            <h2 class="section-title" data-aos="fade-up">Venue Location</h2>
+            <div class="location-grid">
+                <div class="location-details" data-aos="fade-right">
+                    <h3>Jyani Paradise Hotel</h3>
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Wedding Street, Near City Center, Jaipur, Rajasthan - 302001</span>
+                    </div>
+                    <div class="location-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="location-info">
+                        <i class="fas fa-car"></i>
+                        <span>15 minutes from Jaipur International Airport</span>
+                    </div>
+                    <div class="location-info">
+                        <i class="fas fa-train"></i>
+                        <span>10 minutes from Jaipur Railway Station</span>
+                    </div>
+                    <div class="location-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Valet parking available</span>
+                    </div>
+                </div>
+                <div class="map-container" data-aos="fade-left">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.9899832528395!2d75.7877!3d26.8524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUxJzA4LjYiTiA3NcKwNDcnMTUuNyJF!5e0!3m2!1sen!2sin!4v1645000000000!5m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previous sections (RSVP and Footer) remain the same -->
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Loading screen
+        window.addEventListener('load', function () {
+            document.querySelector('.loading-screen').classList.add('fade-out');
+        });
+
+        // Navigation dots
+        const sections = document.querySelectorAll('section');
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.dataset.section === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for navigation dots
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const section = document.getElementById(dot.dataset.section);
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 
 </html>
