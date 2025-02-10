@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varsha & Harsh Ji's Royal Wedding</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            background: #f9f9f9;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #8B0000;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin: 15px 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .hero-section {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section h1 {
+            font-size: 6rem;
+            margin: 0;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .bride-groom-frame {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .bride-groom-frame img {
+            width: 200px;
+            height: 250px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 5px solid #8B0000;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .event-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: #FFE4B5;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-section h4 {
+            font-size: 2rem;
+            color: #8B0000;
+            margin: 10px 0;
+        }
+
+        .event-section p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .gods-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .gods-images img {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+        }
+
+        #rsvp-form {
+            margin: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #rsvp-form input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #rsvp-form button {
+            padding: 10px 20px;
+            background: #8B0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #rsvp-form button:hover {
+            background: #6B0000;
+        }
+
+        footer {
+            background: #8B0000;
+            color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        details {
+            background: #FFE4B5;
+            border-radius: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        summary {
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #8B0000;
+        }
+
+        .event-content {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .event-content img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero-section">
+        <div>
+            <h1>Varsha & Harsh Ji</h1>
+            <p>10th December 2025 | Jyani Paradise Hotel</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Our Journey</h2>
+        <div class="bride-groom-frame">
+            <img src="bride.jpg" alt="Bride">
+            <img src="groom.jpg" alt="Groom">
+        </div>
+
+        <div class="gallery">
+            <img src="img1.jpg" alt="Varsha & Harsh Ji">
+            <img src="img2.jpg" alt="Engagement">
+            <img src="img3.jpg" alt="Pre-Wedding">
+        </div>
+
+        <h2>Wedding Functions</h2>
+        <details>
+            <summary>Haldi Ceremony</summary>
+            <div class="event-content">
+                <p>Join us for the auspicious Haldi ceremony.</p>
+                <img src="haldi.jpg" alt="Haldi Ceremony">
+            </div>
+        </details>
+
+        <details>
+            <summary>Mehendi & Mahila Sangeet</summary>
+            <div class="event-content">
+                <p>Celebrate with music and dance at the Mehendi and Mahila Sangeet.</p>
+                <img src="mehendi.jpg" alt="Mehendi & Mahila Sangeet">
+            </div>
+        </details>
+
+        <details>
+            <summary>The Grand Wedding</summary>
+            <div class="event-content">
+                <p>The most awaited moment!</p>
+                <img src="wedding.jpg" alt="The Grand Wedding">
+            </div>
+        </details>
+
+        <h2>Venue</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.1022597500003!2d75.78631431504398!3d26.85046998316026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5a8b5f8f4d5%3A0x1f3b8c8c8c8c8c8c!2sJyani%20Paradise%20Hotel!5e0!3m2!1sen!2sin!4v1629999999999!5m2!1sen!2sin"></iframe>
+
+        <h2>RSVP</h2>
+        <form id="rsvp-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit">Confirm Attendance</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2025 Varsha & Harsh Ji's Wedding. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
