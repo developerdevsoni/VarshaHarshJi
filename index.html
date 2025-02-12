@@ -10,11 +10,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Italiana&display=swap');
 
+
+
         :root {
-            --primary: #C18F5C;
-            --secondary: #8B4513;
-            --accent: #FFF8DC;
-            --text: #4A4A4A;
+            --primary: #D4AF37;
+            /* Royal Gold */
+            --secondary: #B30000;
+            /* Deep Maroon */
+            --accent1: #FF9933;
+            /* Saffron */
+            --accent2: #138808;
+            /* India Green */
+            --background: #FFF8E7;
+            /* Off-white */
+            --text: #333333;
         }
 
         * {
@@ -27,257 +36,299 @@
             font-family: 'Playfair Display', serif;
             color: var(--text);
             line-height: 1.6;
+            background: var(--background);
             overflow-x: hidden;
+        }
+
+        .diya-border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1000;
+            border: 25px solid transparent;
+            background:
+                linear-gradient(45deg, var(--primary) 25%, transparent 25%) -25px 0,
+                linear-gradient(-45deg, var(--primary) 25%, transparent 25%) -25px 0;
+            background-size: 50px 50px;
+            opacity: 0.2;
+            animation: diaBorderFlow 30s linear infinite;
+        }
+
+        @keyframes diaBorderFlow {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 50px 50px;
+            }
         }
 
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+            /* Ensures the section takes full screen height */
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            background-attachment: fixed;
+            background: linear-gradient(rgba(241, 49, 49, 0.4), rgba(0, 0, 0, 0.4)),
+                url('/api/placeholder/1920/1080') center/cover no-repeat;
+            background-size: cover;
+            background-position: center;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('/api/placeholder/1920/1080') center/cover;
-            z-index: -1;
-        }
-
+        /* Styling the content */
         .hero-content {
-            max-width: 800px;
-            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            /* Keeps the content above the background */
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--primary);
+            max-width: 90%;
+            /* Limits the content width */
+            width: 100%;
         }
 
-        .hero h1 {
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                /* Allows the height to adjust on smaller screens */
+                padding: 2rem 1rem;
+                /* Adds some padding for smaller screens */
+            }
+
+            .hero-content {
+                padding: 2rem;
+                /* Adjusts padding for smaller screens */
+                max-width: 95%;
+                /* Increases the width slightly on mobile */
+            }
+        }
+
+        .names {
             font-family: 'Great Vibes', cursive;
             font-size: 5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: nameGlow 2s ease-in-out infinite alternate;
         }
 
-        .hero p {
-            font-family: 'Italiana', serif;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
+        .wedding-date,
+        .venue {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: var(--accent1);
+        }
+
+        @keyframes nameGlow {
+            from {
+                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            }
+
+            to {
+                text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary);
+            }
         }
 
         .section {
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
-        }
-
-        .section:nth-child(even) {
-            background-color: var(--accent);
+            position: relative;
         }
 
         .section-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-family: 'Italiana', serif;
+            position: relative;
+            /* display: inline-block; */
         }
 
-        .couple-section {
+        .section-title::before,
+        .section-title::after {
+            content: '❈';
+            color: var(--primary);
+            font-size: 2rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .section-title::before {
+            left: -3rem;
+        }
+
+        .section-title::after {
+            right: -3rem;
+        }
+
+        .countdown {
             display: flex;
             justify-content: center;
-            gap: 4rem;
+            gap: 2rem;
+            margin: 3rem 0;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
-        .couple-card {
-            flex: 0 1 400px;
+        .countdown-item {
+            background: linear-gradient(135deg, var(--primary), var(--accent1));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .couple-img {
-            width: 300px;
-            height: 400px;
-            object-fit: cover;
-            border: 8px solid white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        .decorative-border {
-            height: 2px;
-            width: 100px;
-            background: var(--primary);
-            margin: 2rem auto;
-        }
-
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--primary);
-        }
-
-        .timeline-event {
-            margin: 4rem 0;
-            position: relative;
-            width: 50%;
-            padding: 2rem;
-        }
-
-        .timeline-event:nth-child(odd) {
-            left: 0;
-            padding-right: 4rem;
-        }
-
-        .timeline-event:nth-child(even) {
-            left: 50%;
-            padding-left: 4rem;
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
         .event-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+            border: 2px solid var(--primary);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            transition: transform 0.3s ease;
         }
 
-        .event-card h3 {
-            color: var(--primary);
-            font-family: 'Italiana', serif;
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card::after {
+            content: '🕉';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0.2;
+        }
+
+        .event-title {
+            color: var(--secondary);
             font-size: 2rem;
             margin-bottom: 1rem;
+            font-family: 'Italiana', serif;
         }
 
-        .event-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .event-time {
+            color: var(--accent1);
+            font-weight: bold;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            border-radius: 5px;
         }
 
-        .rsvp-form {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .gallery-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('/api/placeholder/100/100') repeat;
+            padding: 5rem 2rem;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .submit-btn:hover {
-            background: var(--secondary);
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
+        .gallery-item {
+            position: relative;
+            padding-bottom: 100%;
+            /* Maintains a square aspect ratio */
+            border: 8px solid var(--primary);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures the image covers the entire area without distortion */
+            object-position: center;
+            /* Keeps the image centered */
+        }
+
+        /* Mobile responsive styles */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3.5rem;
+            .gallery-item {
+                padding-bottom: 100%;
+                /* Ensures the square aspect ratio is maintained on mobile */
             }
 
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-event {
-                width: 100%;
-                left: 0 !important;
-                padding: 2rem !important;
+            .gallery-item img {
+                object-fit: cover;
+                /* Makes sure the image fully covers the space on mobile */
             }
         }
 
         .location-section {
-            background: var(--accent);
-            padding: 6rem 2rem;
+            background: linear-gradient(45deg, var(--primary) 0%, var(--accent1) 100%);
+            color: white;
+            padding: 5rem 2rem;
         }
 
-        .location-container {
-            max-width: 1200px;
+        .location-card {
+            background: white;
+            color: var(--text);
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .location-details {
-            text-align: left;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .location-details h3 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .location-info {
-            margin-bottom: 1.5rem;
-        }
-
-        .location-info i {
-            color: var(--primary);
-            margin-right: 1rem;
+            margin: 2rem 0;
             font-size: 1.2rem;
         }
 
+        .location-details h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        .location-details p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .map-container {
+            position: relative;
+            width: 100%;
             height: 400px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            border: 3px solid var(--primary);
         }
 
         .map-container iframe {
@@ -286,343 +337,171 @@
             border: none;
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 1024px) {
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .couple-section {
-                gap: 2rem;
-            }
-
-            .location-grid {
-                grid-template-columns: 1fr;
-            }
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+            .hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                    url('/api/placeholder/768/768') center/cover no-repeat;
+                background-size: cover;
+                background-position: center;
             }
 
-            .hero p {
-                font-size: 1.4rem;
+            .names {
+                font-size: 2rem;
             }
 
             .section-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
-            .couple-img {
-                width: 250px;
-                height: 350px;
+            .section-title::before,
+            .section-title::after {
+                display: none;
             }
 
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-event {
-                width: 100%;
-                left: 0 !important;
-                padding: 1rem !important;
+            .countdown-item {
+                min-width: 100px;
             }
 
             .event-card {
                 padding: 1.5rem;
             }
 
-            .rsvp-form {
-                padding: 2rem;
-                margin: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .couple-img {
-                width: 200px;
-                height: 280px;
-            }
-
-            .event-card h3 {
-                font-size: 1.5rem;
-            }
-
-            .location-details {
+            .location-card {
                 padding: 1.5rem;
             }
 
-            .location-details h3 {
-                font-size: 1.5rem;
-            }
-
-            .map-container {
-                height: 300px;
-            }
-        }
-
-        /* Add smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation dots for mobile */
-        .nav-dots {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .nav-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.5;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-dot.active {
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-dots {
-                display: none;
-            }
-        }
-
-        /* Add loading animation */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-screen.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-icon {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="hero">
+    <!-- <div class="diya-border"></div> -->
+
+    <section class="hero">
         <div class="hero-content" data-aos="fade-up">
-            <h1>Varsha & Harsh Ji</h1>
-            <p>20th February 2025</p>
-            <div class="decorative-border"></div>
-            <p>Jyani Paradise Hotel</p>
+            <h1 class="names">॥ Varsha & Harsh Ji ॥</h1>
+            <p class="wedding-date">February 20th, 2025</p>
+            <p class="venue">Jyani Paradise Hotel, Kishangarh</p>
         </div>
-    </div>
+    </section>
 
-    <section class="section">
-        <h2 class="section-title" data-aos="fade-up">The Beautiful Couple</h2>
-        <div class="couple-section">
-            <div class="couple-card" data-aos="fade-right">
-                <img src="/api/placeholder/300/400" alt="Varsha" class="couple-img">
-                <h3>Varsha</h3>
-                <p>Daughter of Mr. & Mrs. Sharma</p>
+    <section class="section" data-aos="fade-up">
+        <h2 class="section-title">Wedding Countdown</h2>
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div>Days</div>
             </div>
-            <div class="couple-card" data-aos="fade-left">
-                <img src="/api/placeholder/300/400" alt="Harsh Ji" class="couple-img">
-                <h3>Harsh Ji</h3>
-                <p>Son of Mr. & Mrs. Jyani</p>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div>Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div>Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div>Seconds</div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title" data-aos="fade-up">Wedding Events</h2>
-        <div class="timeline">
-            <div class="timeline-event" data-aos="fade-right">
-                <div class="event-card">
-                    <img src="/api/placeholder/400/300" alt="Haldi Ceremony">
-                    <h3>Haldi Ceremony</h3>
-                    <p>19th February 2025, 10:00 AM</p>
-                    <p>Join us for the auspicious Haldi ceremony</p>
-                </div>
+    <section class="section" data-aos="fade-up">
+        <h2 class="section-title">Wedding Events</h2>
+
+        <div class="event-card" data-aos="fade-right">
+            <h3 class="event-title">Haldi</h3>
+            <p class="event-time">February 17th, 2025 - 3:00 PM</p>
+            <p>Join us for an evening of traditional henna application and celebrations</p>
+        </div>
+
+        <div class="event-card" data-aos="fade-left">
+            <h3 class="event-title">Sangeet</h3>
+            <p class="event-time">February 19th, 2025 - 7:00 PM</p>
+            <p>An evening filled with music, dance, and joyous celebrations</p>
+        </div>
+
+        <div class="event-card" data-aos="fade-right">
+            <h3 class="event-title">Wedding Ceremony</h3>
+            <p class="event-time">February 20th, 2025 - 8:00 PM</p>
+            <p>The auspicious wedding ceremony followed by dinner</p>
+        </div>
+    </section>
+
+    <section class="gallery-section" data-aos="fade-up">
+        <h2 class="section-title">Our Journey Together</h2>
+        <div class="gallery-grid">
+
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="Src/WeddingFRame.png" alt="Gallery Image 4">
             </div>
-            <div class="timeline-event" data-aos="fade-left">
-                <div class="event-card">
-                    <img src="/api/placeholder/400/300" alt="Mehendi Ceremony">
-                    <h3>Mehendi & Sangeet</h3>
-                    <p>19th February 2025, 6:00 PM</p>
-                    <p>An evening of music, dance & traditions</p>
-                </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="Src/WeddingFRame.png" alt="Gallery Image 5">
             </div>
-            <div class="timeline-event" data-aos="fade-right">
-                <div class="event-card">
-                    <img src="/api/placeholder/400/300" alt="Wedding Ceremony">
-                    <h3>Wedding Ceremony</h3>
-                    <p>20th February 2025, 7:00 PM</p>
-                    <p>Join us in celebrating our union</p>
-                </div>
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="Src/WeddingFRame.png" alt="Gallery Image 6">
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title" data-aos="fade-up">RSVP</h2>
-        <form class="rsvp-form" data-aos="zoom-in">
-            <div class="form-group">
-                <input type="text" placeholder="Your Name" required>
+    <section class="location-section" data-aos="fade-up">
+        <h2 class="section-title">Venue Details</h2>
+        <div class="location-card">
+            <div class="location-details">
+                <h3>Jyani Paradise Hotel</h3>
+                <p>📍 Opposite Kishangarh Airport</p>
+                <p>Kishangarh, Rajasthan 305801</p>
+
+                <h3>How to Reach</h3>
+                <p>🛫 Nearest Airport: Kishangarh Airport (Opposite to venue)</p>
+                <p>🚂 Railway Station: Kishangarh Railway Station</p>
+                <p>🛣️ Well connected by road from all major cities</p>
             </div>
-            <div class="form-group">
-                <input type="email" placeholder="Your Email" required>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3555.9607833793347!2d74.8558!3d26.5921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6e89e89!2sJyani+Paradise!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <div class="form-group">
-                <input type="tel" placeholder="Your Phone Number" required>
-            </div>
-            <button type="submit" class="submit-btn">Confirm Attendance</button>
-        </form>
+        </div>
     </section>
 
     <footer>
-        <p>© 2025 Varsha & Harsh Ji's Wedding. All rights reserved.</p>
+        <p>We look forward to celebrating with you!</p>
     </footer>
 
     <script>
         AOS.init({
             duration: 1000,
-            once: true,
-            offset: 100
-        });
-    </script>
-
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-        <div class="loading-icon"></div>
-    </div>
-
-    <!-- Navigation Dots -->
-    <div class="nav-dots">
-        <div class="nav-dot active" data-section="hero"></div>
-        <div class="nav-dot" data-section="couple"></div>
-        <div class="nav-dot" data-section="events"></div>
-        <div class="nav-dot" data-section="location"></div>
-        <div class="nav-dot" data-section="rsvp"></div>
-    </div>
-
-    <!-- Previous sections remain the same until location section -->
-
-    <section class="location-section" id="location">
-        <div class="location-container">
-            <h2 class="section-title" data-aos="fade-up">Venue Location</h2>
-            <div class="location-grid">
-                <div class="location-details" data-aos="fade-right">
-                    <h3>Jyani Paradise Hotel</h3>
-                    <div class="location-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>123 Wedding Street, Near City Center, Jaipur, Rajasthan - 302001</span>
-                    </div>
-                    <div class="location-info">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 98765 43210</span>
-                    </div>
-                    <div class="location-info">
-                        <i class="fas fa-car"></i>
-                        <span>15 minutes from Jaipur International Airport</span>
-                    </div>
-                    <div class="location-info">
-                        <i class="fas fa-train"></i>
-                        <span>10 minutes from Jaipur Railway Station</span>
-                    </div>
-                    <div class="location-info">
-                        <i class="fas fa-info-circle"></i>
-                        <span>Valet parking available</span>
-                    </div>
-                </div>
-                <div class="map-container" data-aos="fade-left">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.9899832528395!2d75.7877!3d26.8524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUxJzA4LjYiTiA3NcKwNDcnMTUuNyJF!5e0!3m2!1sen!2sin!4v1645000000000!5m2!1sen!2sin"
-                        allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Previous sections (RSVP and Footer) remain the same -->
-
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
+            once: false,
+            mirror: true,
             offset: 100
         });
 
-        // Loading screen
-        window.addEventListener('load', function () {
-            document.querySelector('.loading-screen').classList.add('fade-out');
-        });
+        function updateCountdown() {
+            const weddingDate = new Date('2025-02-20T19:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
 
-        // Navigation dots
-        const sections = document.querySelectorAll('section');
-        const navDots = document.querySelectorAll('.nav-dot');
+            document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+        }
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 300) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navDots.forEach(dot => {
-                dot.classList.remove('active');
-                if (dot.dataset.section === current) {
-                    dot.classList.add('active');
-                }
-            });
-        });
-
-        // Smooth scroll for navigation dots
-        navDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const section = document.getElementById(dot.dataset.section);
-                section.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 
